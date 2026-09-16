@@ -1,5 +1,3 @@
-declare function require(name: string): any;
-
 const { PrismaClient, Role } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 
