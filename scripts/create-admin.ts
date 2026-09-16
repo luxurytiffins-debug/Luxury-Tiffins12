@@ -1,4 +1,3 @@
-declare const process: { argv: string[] };
 declare function require(name: string): any;
 
 const { PrismaClient, Role } = require("@prisma/client");
