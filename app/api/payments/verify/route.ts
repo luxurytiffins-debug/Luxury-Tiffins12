@@ -1,0 +1,2 @@
+import crypto from "crypto";
+export async function POST(req:Request){const {orderId,paymentId,signature}=await req.json();const secret=process.env.RAZORPAY_KEY_SECRET;if(!secret)return Response.json({error:"Payment provider not configured"},{status:503});const expected=crypto.createHmac("sha256",secret).update(`${orderId}|${paymentId}`).digest("hex");if(!crypto.timingSafeEqual(Buffer.from(expected),Buffer.from(signature)))return Response.json({error:"Invalid payment signature"},{status:400});return Response.json({verified:true});}

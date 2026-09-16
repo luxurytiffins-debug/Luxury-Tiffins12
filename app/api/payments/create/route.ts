@@ -1,0 +1,2 @@
+import { getRazorpay } from "@/lib/razorpay";
+export async function POST(req:Request){const {amount,receipt}=await req.json();if(!Number.isInteger(amount)||amount<=0)return Response.json({error:"Invalid amount"},{status:400});const order=await getRazorpay().orders.create({amount,currency:"INR",receipt});return Response.json({id:order.id,keyId:process.env.RAZORPAY_KEY_ID});}
