@@ -1,8 +1,6 @@
 'use client';
 
-// @ts-expect-error React is provided by the project runtime
 import { useEffect, useState } from 'react';
-
 type CartItem = {
   productId: string | number;
   name: string;
